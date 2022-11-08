@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -9,8 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class BrowserComponent implements OnInit {
 
-  constructor( 
-    private _http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(value => this.searchEmitter.emit(value as string))
@@ -18,7 +16,5 @@ export class BrowserComponent implements OnInit {
 search = new FormControl('')
 
 @Output('search') searchEmitter = new EventEmitter<string>();
-
-
 
 }

@@ -1,0 +1,78 @@
+<app-browser (search)="handleSearch($event)"></app-browser>
+<table class="table">
+    <tr>
+        <th >#</th>
+        <th >name</th>
+        <th >tagline</th>
+        <th >first brewed</th>
+        <th >description</th>
+        <th >logo</th>
+        <th >abv</th>
+        <th >ibu</th>
+        <th >fg</th>
+        <th >og</th>
+        <th >ebc</th>
+        <th >srm</th>
+        <th >ph</th>
+        <th >attenuation</th>
+        <th >volume</th>
+        <th >boil</th>
+        <th >method</th>
+        <th >ingredients</th>
+        <th >pairing</th>
+        <th >tips</th>
+        <th >contributed by</th>
+      </tr>
+    <tr  *ngFor= "let beer of cervezas | search:filtro_valor">
+        <td>{{beer.id}}</td>
+        <td>{{beer.name}}</td>
+        <td>{{beer.tagline}}</td>
+        <td>{{beer.first_brewed}}</td>
+        <td> {{beer.description}}</td>
+        <td><img src={{beer.image_url}}></td>
+        <td>{{beer.abv}}</td>
+        <td>{{beer.ibu}}</td>
+        <td>{{beer.target_fg}}</td>
+        <td>{{beer.target_og}}</td>
+        <td>{{beer.ebc}}</td>
+        <td>{{beer.srm}}</td>
+        <td>{{beer.ph}}</td>
+        <td>{{beer.attenuation_level}}</td>
+        <td>{{beer.volume.value}} {{beer.volume.unit}}</td>
+        <td>{{beer.boil_volume.value}} {{beer.boil_volume.unit}}</td>
+        <td>
+            <table class="table" >
+                <tr *ngFor="let temp of beer.method.mash_temp let indexOfelement=index;">
+                    <th class="sub_table_format">mash_temp{{indexOfelement}}</th>
+                    <td class="sub_table_format">{{temp.temp.value}} {{temp.temp.unit}}</td>
+                    <td class="sub_table_format">{{temp.duration}}</td>
+                </tr>
+                <tr><th class="sub_table_format">fermentation</th>
+                    <td class="sub_table_format">{{beer.method.fermentation.temp.value}} {{beer.method.fermentation.temp.unit}}</td>
+                </tr>
+                <tr><th class="sub_table_format">twist</th>
+                    <td class="sub_table_format">{{beer.method.twist}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="table" >
+                <th class="sub_table_format">malt</th>
+                <tr *ngFor="let ingredient of beer.ingredients.malt">
+                    <td class="sub_table_format">{{ingredient.name}}</td>
+                    <td class="sub_table_format">{{ingredient.amount.value}} {{ingredient.amount.unit}}</td>
+                </tr>
+                <th class="sub_table_format">hop</th>
+                <tr *ngFor="let hop of beer.ingredients.hops">
+                    <td class="sub_table_format">{{hop.name}}</td>
+                    <td class="sub_table_format">{{hop.amount.value}} {{hop.amount.unit}}</td>
+                    <td class="sub_table_format">{{hop.add}}</td>
+                    <td class="sub_table_format">{{hop.attribute}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>{{beer.food_pairing}}</td>
+        <td>{{beer.brewers_tips}}</td>
+        <td>{{beer.contributed_by}}</td>
+    </tr>
+</table>

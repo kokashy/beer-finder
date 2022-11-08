@@ -1,0 +1,35 @@
+
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+td:first-child {
+    border-left:1px solid;
+}
+th:first-child {
+    border-left:1px solid;
+}
+td,th {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+th {
+    border-top: 1px solid;
+}
+table{
+    table-layout: fixed;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  tbody{
+        display: block;
+      overflow: auto;
+      display: none;
+  }
+tr{
+    border-left: 1px solid;
+}
+.sub_table_format,.sub_table_format:first-child {
+    border: 0px solid;
+}
